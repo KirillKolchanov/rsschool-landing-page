@@ -264,3 +264,115 @@ main {
   color: var(--bg-page);
   background-color: var(--border-inverse);
 }
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.logo {
+  flex-shrink: 0;
+  display: block;
+  width: 100px;
+  height: 60px;
+  transition: opacity var(--transition);
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+.logo__img--dark,
+[data-theme="dark"] .logo__img--light {
+  display: none;
+}
+
+[data-theme="dark"] .logo__img--dark {
+  display: block;
+}
+
+.nav {
+  flex-grow: 1;
+}
+
+.nav__list {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Theme switch */
+
+.theme-switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 88px;
+  height: 44px;
+  padding: 4px;
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-full);
+  transition: border-color var(--transition);
+}
+
+.theme-switch__option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: var(--text-primary);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.theme-switch__option .icon {
+  width: 36px;
+  height: 36px;
+}
+
+.theme-switch[aria-checked="false"] .theme-switch__option--light,
+.theme-switch[aria-checked="true"] .theme-switch__option--dark {
+  color: var(--bg-page);
+  background-color: var(--text-accent);
+}
+
+.theme-switch:hover {
+  border-color: var(--text-accent);
+}
+
+/* Burger (shown on tablet and mobile) */
+
+.burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border-inverse);
+  border-radius: var(--radius-full);
+  color: var(--text-primary);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.burger .icon {
+  width: 18px;
+  height: 10px;
+}
+
+.burger:hover {
+  color: var(--bg-page);
+  background-color: var(--border-inverse);
+}
