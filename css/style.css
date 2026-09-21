@@ -681,3 +681,140 @@ main {
 .contacts__hours {
   padding-bottom: 4px;
 }
+
+/* ==========================================================================
+   Menu page
+   ========================================================================== */
+
+.menu {
+  margin-top: calc(20px - var(--section-gap));
+}
+
+.menu__offer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.menu__title {
+  max-width: 800px;
+  text-align: center;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 15px 7px 7px;
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  transition: background-color var(--transition), border-color var(--transition), color var(--transition);
+}
+
+.tab__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--border-primary);
+  transition: background-color var(--transition);
+}
+
+.tab:hover,
+.tab--active {
+  border-color: var(--bg-container);
+  color: var(--text-inverse);
+  background-color: var(--bg-container);
+}
+
+.tab:hover .tab__icon,
+.tab--active .tab__icon {
+  background-color: #e1d4c9;
+}
+
+.tab--active {
+  cursor: default;
+}
+
+.menu__category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin-top: -60px;
+}
+
+.menu__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 310px));
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  min-height: 506px;
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.card:hover,
+.card:focus-visible {
+  border-color: var(--border-inverse);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+  outline: none;
+}
+
+.card__img-box {
+  aspect-ratio: 1;
+  border-radius: var(--radius-l);
+  overflow: hidden;
+}
+
+.card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .card__img,
+.card:focus-visible .card__img {
+  transform: scale(1.1);
+}
+
+.card__body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px;
+}
+
+.card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* the "show more" button is only needed when not all cards fit (tablet/mobile) */
+.menu__more {
+  display: none;
+}
