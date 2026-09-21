@@ -848,10 +848,10 @@ main {
   }
 
   .theme-switch {
-    gap: 12px;
+    gap: 8px;
     width: 104px;
     height: 52px;
-    padding: 4px 16px;
+    padding: 4px;
   }
 
   .theme-switch__option,
