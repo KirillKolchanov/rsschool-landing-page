@@ -376,3 +376,38 @@ main {
   color: var(--bg-page);
   background-color: var(--border-inverse);
 }
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero {
+  margin-top: calc(20px - var(--section-gap));
+}
+
+.hero__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 100px;
+  border-radius: var(--radius-l);
+  overflow: hidden;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  max-width: 530px;
+  color: var(--text-inverse);
+}
