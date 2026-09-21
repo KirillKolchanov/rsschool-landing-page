@@ -1,0 +1,266 @@
+/* ==========================================================================
+   Design tokens
+   ========================================================================== */
+
+:root {
+  --text-primary: #403f3d;
+  --text-inverse: #e1d4c9;
+  --text-accent: #b0907a;
+  --bg-page: #e1d4c9;
+  --bg-container: #665f55;
+  --bg-overlay: rgb(64 63 61 / 80%);
+  --border-primary: #c1b6ad;
+  --border-inverse: #665f55;
+
+  --radius-l: 40px;
+  --radius-m: 20px;
+  --radius-full: 100px;
+
+  --container-width: 1360px;
+  --page-gutter: 40px;
+  --section-gap: 100px;
+
+  --transition: 0.3s ease;
+
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --text-primary: #e1d4c9;
+  --text-inverse: #e1d4c9;
+  --text-accent: #b0907a;
+  --bg-page: #292826;
+  --bg-container: #403f3d;
+  --bg-overlay: rgb(41 40 38 / 80%);
+  --border-primary: #665f55;
+  --border-inverse: #c1b6ad;
+
+  color-scheme: dark;
+}
+
+/* ==========================================================================
+   Reset
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+  min-width: 380px;
+  padding: 20px 0 40px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background-color: var(--bg-page);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+}
+
+.container {
+  width: 100%;
+  max-width: calc(var(--container-width) + var(--page-gutter) * 2);
+  margin: 0 auto;
+  padding: 0 var(--page-gutter);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Typography */
+
+.heading-1 {
+  font-size: 72px;
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+.heading-2 {
+  font-size: 60px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.heading-3 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.accent {
+  font-style: italic;
+  color: var(--text-accent);
+}
+
+/* Icons: monochrome SVGs are used as masks so they follow currentColor */
+
+.icon {
+  flex-shrink: 0;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: currentColor;
+  mask: var(--icon) center / contain no-repeat;
+}
+
+.icon-coffee-cup { --icon: url("../assets/icons/coffee-cup.svg"); }
+.icon-arrow-left { --icon: url("../assets/icons/arrow-left.svg"); }
+.icon-arrow-right { --icon: url("../assets/icons/arrow-right.svg"); }
+.icon-burger { --icon: url("../assets/icons/burger.svg"); }
+.icon-sun { --icon: url("../assets/icons/sun.svg"); }
+.icon-moon { --icon: url("../assets/icons/moon.svg"); }
+.icon-apple { --icon: url("../assets/icons/apple.svg"); }
+.icon-google-play { --icon: url("../assets/icons/google-play.svg"); }
+.icon-twitter { --icon: url("../assets/icons/twitter.svg"); }
+.icon-instagram { --icon: url("../assets/icons/instagram.svg"); }
+.icon-facebook { --icon: url("../assets/icons/facebook.svg"); }
+.icon-pin { --icon: url("../assets/icons/pin.svg"); }
+.icon-phone { --icon: url("../assets/icons/phone.svg"); }
+.icon-clock { --icon: url("../assets/icons/clock.svg"); }
+.icon-refresh { --icon: url("../assets/icons/refresh.svg"); }
+
+/* ==========================================================================
+   Components
+   ========================================================================== */
+
+/* Link with an underline growing from the center on hover */
+
+.link {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding-bottom: 4px;
+  font-weight: 600;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  transform: translateX(-50%);
+  transition: width var(--transition);
+}
+
+.link:hover::after,
+.link--active::after {
+  width: 100%;
+}
+
+/* Primary button (hero) */
+
+.button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 200px;
+  padding: 20px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  color: var(--text-primary);
+  background-color: var(--bg-page);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.button-primary .icon {
+  width: 0;
+  margin-left: -8px;
+  transition: width var(--transition), margin var(--transition);
+}
+
+.button-primary:hover .icon {
+  width: 20px;
+  margin-left: 0;
+}
+
+/* Round icon button (slider arrows, load more) */
+
+.button-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border: 1px solid var(--border-inverse);
+  border-radius: var(--radius-full);
+  color: var(--text-primary);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.button-icon .icon {
+  width: 24px;
+  height: 24px;
+}
+
+.button-icon:hover {
+  color: var(--bg-page);
+  background-color: var(--border-inverse);
+}
