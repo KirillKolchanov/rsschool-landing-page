@@ -495,3 +495,49 @@ main {
 .slider__control--active {
   background-color: var(--border-inverse);
 }
+
+/* ==========================================================================
+   About
+   ========================================================================== */
+
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.about__images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.about__column {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.about__box {
+  border-radius: var(--radius-m);
+  overflow: hidden;
+}
+
+.about__box--tall {
+  height: 590px;
+}
+
+.about__box--short {
+  height: 430px;
+}
+
+.about__box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.about__box:hover img {
+  transform: scale(1.1);
+}
