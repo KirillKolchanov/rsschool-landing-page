@@ -675,7 +675,7 @@ main {
   display: inline-flex;
   gap: 8px;
   font-weight: 600;
-  white-space: pre;
+  white-space: nowrap;
 }
 
 .contacts__hours {
