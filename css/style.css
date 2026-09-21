@@ -541,3 +541,73 @@ main {
 .about__box:hover img {
   transform: scale(1.1);
 }
+
+/* ==========================================================================
+   Mobile app
+   ========================================================================== */
+
+.app {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+}
+
+.app__offer {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.app__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.app__screens {
+  flex-shrink: 1;
+  width: 630px;
+  min-width: 0;
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.store-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 200px;
+  padding: 11px 19px;
+  border: 1px solid var(--border-inverse);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.store-button:hover {
+  color: var(--bg-page);
+  background-color: var(--border-inverse);
+}
+
+.store-button .icon {
+  width: 36px;
+  height: 36px;
+}
+
+.icon-google-play {
+  transform: scaleY(-1);
+}
+
+.store-button__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.store-button__caption {
+  font-size: 10px;
+  line-height: 1.4;
+}
