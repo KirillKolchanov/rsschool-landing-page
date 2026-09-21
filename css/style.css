@@ -839,7 +839,7 @@ main {
   }
 
   .nav,
-  .header__menu-link {
+  .header__menu-nav {
     display: none;
   }
 
