@@ -953,6 +953,15 @@ main {
     padding: 60px 16px;
   }
 
+  .tabs {
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
+  .tab {
+    padding: 7px 12px 7px 7px;
+  }
+
   .menu__grid {
     grid-template-columns: minmax(0, 348px);
   }
