@@ -117,6 +117,11 @@ main {
   padding: 0 var(--page-gutter);
 }
 
+/* set from JS while the burger menu or the modal is open */
+.scroll-lock {
+  overflow: hidden;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -168,7 +173,6 @@ main {
 .icon-coffee-cup { --icon: url("../assets/icons/coffee-cup.svg"); }
 .icon-arrow-left { --icon: url("../assets/icons/arrow-left.svg"); }
 .icon-arrow-right { --icon: url("../assets/icons/arrow-right.svg"); }
-.icon-burger { --icon: url("../assets/icons/burger.svg"); }
 .icon-sun { --icon: url("../assets/icons/sun.svg"); }
 .icon-moon { --icon: url("../assets/icons/moon.svg"); }
 .icon-apple { --icon: url("../assets/icons/apple.svg"); }
@@ -307,6 +311,11 @@ main {
   gap: 40px;
 }
 
+/* the menu page link is already in the header; it is repeated in the burger menu */
+.nav__item--mobile {
+  display: none;
+}
+
 .header__actions {
   display: flex;
   align-items: center;
@@ -356,6 +365,7 @@ main {
 /* Burger (shown on tablet and mobile) */
 
 .burger {
+  position: relative;
   display: none;
   align-items: center;
   justify-content: center;
@@ -367,9 +377,33 @@ main {
   transition: background-color var(--transition), color var(--transition);
 }
 
-.burger .icon {
-  width: 18px;
-  height: 10px;
+/* two lines that turn into a cross when the menu is open */
+.burger__line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 1.5px;
+  margin: -0.75px 0 0 -8px;
+  border-radius: 1px;
+  background-color: currentColor;
+  transition: transform var(--transition);
+}
+
+.burger__line:first-child {
+  transform: translateY(-4px);
+}
+
+.burger__line:last-child {
+  transform: translateY(4px);
+}
+
+.burger[aria-expanded="true"] .burger__line:first-child {
+  transform: rotate(45deg);
+}
+
+.burger[aria-expanded="true"] .burger__line:last-child {
+  transform: rotate(-45deg);
 }
 
 .burger:hover {
@@ -838,9 +872,67 @@ main {
     --section-gap: 60px;
   }
 
-  .nav,
+  /* the header stays on screen so the burger menu can always be closed */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    margin-top: -10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: var(--bg-page);
+    transition: background-color var(--transition);
+  }
+
+  .hero,
+  .menu {
+    margin-top: calc(10px - var(--section-gap));
+  }
+
+  section[id],
+  footer[id] {
+    scroll-margin-top: 90px;
+  }
+
   .header__menu-nav {
     display: none;
+  }
+
+  /* burger menu panel: slides in from the right under the header */
+  .nav {
+    position: fixed;
+    top: var(--menu-top, 90px);
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow-y: auto;
+    background-color: var(--bg-page);
+    visibility: hidden;
+    transform: translateX(100%);
+    transition: transform var(--transition), visibility var(--transition), background-color var(--transition);
+  }
+
+  .header--menu-open .nav {
+    visibility: visible;
+    transform: none;
+  }
+
+  .nav__list {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 60px var(--page-gutter);
+    font-size: 32px;
+    line-height: 1.25;
+  }
+
+  .nav__item--mobile {
+    display: block;
+  }
+
+  .nav__list .icon {
+    width: 40px;
+    height: 40px;
   }
 
   .burger {
