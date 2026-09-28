@@ -3,10 +3,14 @@
  * the category tabs switch the visible set without reloading the page.
  */
 const DATA_URL = 'data/products.json';
+// how many cards are shown on 768px and narrower before "show more" is pressed
+// (the limit itself is applied in CSS, so it follows the window width)
+const COLLAPSED_CARDS_COUNT = 4;
 
 const tabs = [...document.querySelectorAll('.tab')];
 const grid = document.querySelector('.menu__grid');
 const categoryTitle = document.querySelector('#category-title');
+const moreButton = document.querySelector('.menu__more');
 
 let products = [];
 
@@ -70,6 +74,20 @@ function renderCategory(category) {
   });
 
   grid.replaceChildren(...categoryProducts.map(createCard));
+
+  // every category starts with the initial set of cards
+  const hasHiddenCards = categoryProducts.length > COLLAPSED_CARDS_COUNT;
+
+  grid.classList.toggle('menu__grid--collapsed', hasHiddenCards);
+  moreButton.hidden = !hasHiddenCards;
+}
+
+function showAllCards() {
+  grid.classList.remove('menu__grid--collapsed');
+  moreButton.hidden = true;
+
+  // the button disappears, so the focus goes to the first card that was hidden
+  grid.children[COLLAPSED_CARDS_COUNT]?.focus();
 }
 
 function showError() {
@@ -101,10 +119,12 @@ async function initMenu() {
     });
   });
 
+  moreButton.addEventListener('click', showAllCards);
+
   // the first category is always active after the page is opened
   renderCategory(tabs[0].dataset.category);
 }
 
-if (grid && tabs.length > 0) {
+if (grid && moreButton && tabs.length > 0) {
   initMenu();
 }

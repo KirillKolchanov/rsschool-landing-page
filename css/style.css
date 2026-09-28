@@ -865,7 +865,8 @@ main {
 }
 
 /* the "show more" button is only needed when not all cards fit (tablet/mobile) */
-.menu__more {
+.menu__more,
+.menu__more[hidden] {
   display: none;
 }
 
@@ -1028,8 +1029,8 @@ main {
     grid-template-columns: repeat(2, minmax(0, 310px));
   }
 
-  /* the rest of the cards are opened with the button */
-  .card--extra {
+  /* only the first four cards are shown until the "show more" button is pressed */
+  .menu__grid--collapsed .card:nth-child(n + 5) {
     display: none;
   }
 
