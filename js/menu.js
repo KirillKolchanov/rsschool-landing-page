@@ -2,6 +2,9 @@
  * Menu page: product cards are rendered from data/products.json,
  * the category tabs switch the visible set without reloading the page.
  */
+import { openProductModal } from './modal.js';
+import { formatPrice } from './price.js';
+
 const DATA_URL = 'data/products.json';
 // how many cards are shown on 768px and narrower before "show more" is pressed
 // (the limit itself is applied in CSS, so it follows the window width)
@@ -13,6 +16,8 @@ const categoryTitle = document.querySelector('#category-title');
 const moreButton = document.querySelector('.menu__more');
 
 let products = [];
+// every card keeps a link to its product object, the modal is built from it
+const cardProducts = new WeakMap();
 
 function createElement(tagName, className, text) {
   const element = document.createElement(tagName);
@@ -26,10 +31,6 @@ function createElement(tagName, className, text) {
   }
 
   return element;
-}
-
-function formatPrice(price) {
-  return `$${Number(price).toFixed(2)}`;
 }
 
 function createCard(product) {
@@ -54,6 +55,7 @@ function createCard(product) {
   );
   body.append(info, createElement('p', 'heading-3', formatPrice(product.price)));
   card.append(imageBox, body);
+  cardProducts.set(card, product);
 
   return card;
 }
@@ -120,6 +122,23 @@ async function initMenu() {
   });
 
   moreButton.addEventListener('click', showAllCards);
+
+  grid.addEventListener('click', (event) => {
+    const card = event.target.closest('.card');
+
+    if (card) {
+      openProductModal(cardProducts.get(card));
+    }
+  });
+
+  grid.addEventListener('keydown', (event) => {
+    const card = event.target.closest('.card');
+
+    if (card && (event.key === 'Enter' || event.key === ' ')) {
+      event.preventDefault();
+      openProductModal(cardProducts.get(card));
+    }
+  });
 
   // the first category is always active after the page is opened
   renderCategory(tabs[0].dataset.category);

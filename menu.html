@@ -61,6 +61,28 @@
         <span class="icon icon-refresh" aria-hidden="true"></span>
       </button>
     </section>
+
+    <!-- product modal: filled from the same product object as the card -->
+    <dialog class="modal" aria-labelledby="modal-title">
+      <div class="modal__content">
+        <div class="modal__img-box"></div>
+        <div class="modal__body">
+          <div class="modal__info">
+            <h2 class="heading-3" id="modal-title">Product</h2>
+            <p class="modal__description"></p>
+          </div>
+          <p class="heading-3 modal__total">
+            <span>Total:</span>
+            <output class="modal__price" aria-live="polite"></output>
+          </p>
+          <p class="modal__note">
+            <span class="icon icon-info" aria-hidden="true"></span>
+            The cost is not final. Download our mobile app to see the final price and place your order. Earn loyalty points and enjoy your favorite coffee with up to 20% discount.
+          </p>
+          <button class="modal__close" type="button">Close</button>
+        </div>
+      </div>
+    </dialog>
   </main>
 
   <footer class="footer container" id="contacts">
