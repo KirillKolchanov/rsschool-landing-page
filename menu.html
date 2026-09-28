@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="js/theme.js"></script>
   <script type="module" src="js/burger.js"></script>
+  <script type="module" src="js/menu.js"></script>
 </head>
 <body>
   <header class="header container">
@@ -47,111 +48,15 @@
     <div class="menu__offer">
       <h1 class="heading-2 menu__title">Behind each of our cups hides an <span class="accent">amazing surprise</span></h1>
       <div class="tabs" role="group" aria-label="Menu categories">
-        <button class="tab tab--active" type="button" aria-pressed="true"><span class="tab__icon" aria-hidden="true">☕</span>Coffee</button>
-        <button class="tab" type="button" aria-pressed="false"><span class="tab__icon" aria-hidden="true">🫖</span>Tea</button>
-        <button class="tab" type="button" aria-pressed="false"><span class="tab__icon" aria-hidden="true">🍰</span>Dessert</button>
+        <button class="tab tab--active" type="button" aria-pressed="true" data-category="coffee"><span class="tab__icon" aria-hidden="true">☕</span>Coffee</button>
+        <button class="tab" type="button" aria-pressed="false" data-category="tea"><span class="tab__icon" aria-hidden="true">🫖</span>Tea</button>
+        <button class="tab" type="button" aria-pressed="false" data-category="dessert"><span class="tab__icon" aria-hidden="true">🍰</span>Dessert</button>
       </div>
     </div>
     <section class="menu__category" aria-labelledby="category-title">
       <h2 class="visually-hidden" id="category-title">Coffee</h2>
-      <ul class="menu__grid">
-          <li class="card" tabindex="0">
-            <div class="card__img-box">
-              <img class="card__img" src="assets/img/coffee-1.jpg" width="340" height="340" alt="Irish coffee" loading="lazy">
-            </div>
-            <div class="card__body">
-              <div class="card__info">
-                <h3 class="heading-3">Irish coffee</h3>
-                <p>Fragrant black coffee with Jameson Irish whiskey and whipped milk</p>
-              </div>
-              <p class="heading-3">$7.00</p>
-            </div>
-          </li>
-          <li class="card" tabindex="0">
-            <div class="card__img-box">
-              <img class="card__img" src="assets/img/coffee-2.jpg" width="340" height="340" alt="Kahlua coffee" loading="lazy">
-            </div>
-            <div class="card__body">
-              <div class="card__info">
-                <h3 class="heading-3">Kahlua coffee</h3>
-                <p>Classic coffee with milk and Kahlua liqueur under a cap of frothed milk</p>
-              </div>
-              <p class="heading-3">$7.00</p>
-            </div>
-          </li>
-          <li class="card" tabindex="0">
-            <div class="card__img-box">
-              <img class="card__img" src="assets/img/coffee-3.jpg" width="340" height="340" alt="Honey raf" loading="lazy">
-            </div>
-            <div class="card__body">
-              <div class="card__info">
-                <h3 class="heading-3">Honey raf</h3>
-                <p>Espresso with frothed milk, cream and aromatic honey</p>
-              </div>
-              <p class="heading-3">$5.50</p>
-            </div>
-          </li>
-          <li class="card" tabindex="0">
-            <div class="card__img-box">
-              <img class="card__img" src="assets/img/coffee-4.jpg" width="340" height="340" alt="Ice cappuccino" loading="lazy">
-            </div>
-            <div class="card__body">
-              <div class="card__info">
-                <h3 class="heading-3">Ice cappuccino</h3>
-                <p>Cappuccino with soft thick foam in summer version with ice</p>
-              </div>
-              <p class="heading-3">$5.00</p>
-            </div>
-          </li>
-          <li class="card card--extra" tabindex="0">
-            <div class="card__img-box">
-              <img class="card__img" src="assets/img/coffee-5.jpg" width="340" height="340" alt="Espresso" loading="lazy">
-            </div>
-            <div class="card__body">
-              <div class="card__info">
-                <h3 class="heading-3">Espresso</h3>
-                <p>Classic black coffee</p>
-              </div>
-              <p class="heading-3">$4.50</p>
-            </div>
-          </li>
-          <li class="card card--extra" tabindex="0">
-            <div class="card__img-box">
-              <img class="card__img" src="assets/img/coffee-6.jpg" width="340" height="340" alt="Latte" loading="lazy">
-            </div>
-            <div class="card__body">
-              <div class="card__info">
-                <h3 class="heading-3">Latte</h3>
-                <p>Espresso coffee with the addition of steamed milk and dense milk foam</p>
-              </div>
-              <p class="heading-3">$5.50</p>
-            </div>
-          </li>
-          <li class="card card--extra" tabindex="0">
-            <div class="card__img-box">
-              <img class="card__img" src="assets/img/coffee-7.jpg" width="340" height="340" alt="Latte macchiato" loading="lazy">
-            </div>
-            <div class="card__body">
-              <div class="card__info">
-                <h3 class="heading-3">Latte macchiato</h3>
-                <p>Espresso with frothed milk and chocolate</p>
-              </div>
-              <p class="heading-3">$5.50</p>
-            </div>
-          </li>
-          <li class="card card--extra" tabindex="0">
-            <div class="card__img-box">
-              <img class="card__img" src="assets/img/coffee-8.jpg" width="340" height="340" alt="Coffee with cognac" loading="lazy">
-            </div>
-            <div class="card__body">
-              <div class="card__info">
-                <h3 class="heading-3">Coffee with cognac</h3>
-                <p>Fragrant black coffee with cognac and whipped cream</p>
-              </div>
-              <p class="heading-3">$6.50</p>
-            </div>
-          </li>
-      </ul>
+      <!-- cards are rendered from data/products.json -->
+      <ul class="menu__grid"></ul>
       <button class="button-icon menu__more" type="button" aria-label="Show more">
         <span class="icon icon-refresh" aria-hidden="true"></span>
       </button>

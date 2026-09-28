@@ -809,6 +809,14 @@ main {
   overflow: hidden;
   cursor: pointer;
   transition: border-color var(--transition), box-shadow var(--transition);
+  animation: card-appear 0.4s ease both;
+}
+
+@keyframes card-appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 }
 
 .card:hover,
@@ -849,6 +857,11 @@ main {
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.menu__message {
+  grid-column: 1 / -1;
+  text-align: center;
 }
 
 /* the "show more" button is only needed when not all cards fit (tablet/mobile) */
