@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="js/theme.js"></script>
   <script type="module" src="js/burger.js"></script>
+  <script type="module" src="js/slider.js"></script>
 </head>
 <body>
   <header class="header container">
@@ -57,7 +58,7 @@
 
     <section class="favorite container" id="favorite-coffee">
       <h2 class="heading-2 favorite__title">Choose your <span class="accent">favorite</span> coffee</h2>
-      <div class="slider">
+      <div class="slider" aria-roledescription="carousel" aria-label="Favorite coffee">
         <div class="slider__row">
           <button class="button-icon slider__arrow" type="button" aria-label="Previous slide">
             <span class="icon icon-arrow-left" aria-hidden="true"></span>
@@ -89,7 +90,7 @@
           </button>
         </div>
         <div class="slider__controls">
-          <button class="slider__control slider__control--active" type="button" aria-label="Slide 1"></button>
+          <button class="slider__control slider__control--active" type="button" aria-label="Slide 1" aria-current="true"></button>
           <button class="slider__control" type="button" aria-label="Slide 2"></button>
           <button class="slider__control" type="button" aria-label="Slide 3"></button>
         </div>

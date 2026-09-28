@@ -478,10 +478,12 @@ main {
   flex-grow: 1;
   min-width: 0;
   overflow: hidden;
+  touch-action: pan-y;
 }
 
 .slider__track {
   display: flex;
+  transition: transform 0.6s ease-in-out;
 }
 
 .slide {
@@ -956,8 +958,31 @@ main {
     padding: 100px 60px;
   }
 
+  /* the arrows move under the slide, on both sides of the indicators */
+  .slider {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 40px 20px;
+  }
+
+  .slider__row {
+    display: contents;
+  }
+
+  .slider__viewport {
+    grid-row: 1;
+    grid-column: 1 / -1;
+  }
+
   .slider__arrow {
-    display: none;
+    grid-row: 2;
+  }
+
+  .slider__controls {
+    grid-row: 2;
+    grid-column: 2;
+    justify-content: center;
   }
 
   /* only two of the four images are shown, as in the layout */
