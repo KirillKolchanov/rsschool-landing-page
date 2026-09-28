@@ -770,16 +770,25 @@ main {
   transition: background-color var(--transition);
 }
 
+/* modal options are labels with a hidden radio or checkbox inside */
 .tab:hover,
-.tab--active {
+.tab--active,
+.tab:has(:checked) {
   border-color: var(--bg-container);
   color: var(--text-inverse);
   background-color: var(--bg-container);
 }
 
 .tab:hover .tab__icon,
-.tab--active .tab__icon {
+.tab--active .tab__icon,
+.tab:has(:checked) .tab__icon {
+  color: #403f3d;
   background-color: #e1d4c9;
+}
+
+.tab:has(:focus-visible) {
+  outline: 2px solid var(--text-accent);
+  outline-offset: 4px;
 }
 
 .tab--active {
@@ -899,6 +908,11 @@ main {
   transform: none;
 }
 
+/* on the dark overlay the window needs an edge to stand out */
+[data-theme="dark"] .modal {
+  border: 1px solid var(--border-primary);
+}
+
 .modal::backdrop {
   background-color: var(--bg-overlay);
   opacity: 0;
@@ -944,8 +958,9 @@ main {
   object-fit: cover;
 }
 
+/* the options keep their width, the photo gives way on narrower screens */
 .modal__body {
-  flex: 1 1 0;
+  flex: 1 0 380px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -956,6 +971,34 @@ main {
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.modal__options {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modal__option {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.modal__option-title {
+  margin-bottom: 8px;
+  padding: 0;
+}
+
+.modal__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.modal__tabs .tab {
+  cursor: pointer;
 }
 
 .modal__total {
@@ -1227,6 +1270,11 @@ main {
   /* on narrow screens the photo is dropped to keep the options readable */
   .modal__img-box {
     display: none;
+  }
+
+  .modal__body {
+    flex-basis: 0;
+    flex-shrink: 1;
   }
 }
 
