@@ -18,6 +18,7 @@ const priceOutput = modal.querySelector('.modal__price');
 const closeButton = modal.querySelector('.modal__close');
 
 let currentProduct = null;
+let isScrollLocked = false;
 
 function createOptionTab({ type, name, value, marker, label, isChecked }) {
   const tab = document.createElement('label');
@@ -99,15 +100,29 @@ function fillModal(product) {
   updatePrice();
 }
 
+function releaseScroll() {
+  if (isScrollLocked) {
+    unlockScroll();
+    isScrollLocked = false;
+  }
+}
+
 export function openProductModal(product) {
   currentProduct = product;
   fillModal(product);
-  lockScroll();
+
+  if (!isScrollLocked) {
+    lockScroll();
+    isScrollLocked = true;
+  }
+
   modal.showModal();
 }
 
+// the scroll is released right away: the "close" event comes asynchronously
 function closeModal() {
   modal.close();
+  releaseScroll();
 }
 
 optionsForm.addEventListener('change', updatePrice);
@@ -116,8 +131,8 @@ optionsForm.addEventListener('submit', (event) => {
   event.preventDefault();
 });
 
-// "close" fires for every way of closing, including Escape
-modal.addEventListener('close', unlockScroll);
+// covers closing with Escape
+modal.addEventListener('close', releaseScroll);
 
 closeButton.addEventListener('click', closeModal);
 

@@ -895,17 +895,14 @@ main {
   color: var(--text-primary);
   background-color: var(--bg-page);
   opacity: 0;
-  transform: scale(0.95);
   transition:
     opacity var(--transition),
-    transform var(--transition),
     overlay var(--transition) allow-discrete,
     display var(--transition) allow-discrete;
 }
 
 .modal[open] {
   opacity: 1;
-  transform: none;
 }
 
 /* on the dark overlay the window needs an edge to stand out */
@@ -926,14 +923,11 @@ main {
   opacity: 1;
 }
 
+/* only a fade: a size animation looks like a jump on phones */
 @starting-style {
   .modal[open],
   .modal[open]::backdrop {
     opacity: 0;
-  }
-
-  .modal[open] {
-    transform: scale(0.95);
   }
 }
 
